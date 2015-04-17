@@ -2,9 +2,53 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 	<title>疯狂点击QQ表情</title>
+	<link rel="stylesheet" href="./style/animate.min.css">
+	<link rel="stylesheet" href="./style/csshake.min.css">
+	<link rel="stylesheet" href="./style/main.css">
 </head>
 <body>
-	
+	<!-- 加载动画 -->
+	<div id="loading">
+		<div id="loadingBox"></div>
+	</div>
+	<div class="main-wrap">
+
+		<div class="header">
+			<h1>消灭得瑟的QQ表情<span>熊熊109</span></h1>
+			<div class="score">
+				当前得分:<span id="score">0</span>
+			</div>
+			<div class="score">
+				历史最高:<span id="record">0</span>
+			</div>
+			<div class="status">
+				<button id="start">开始游戏</button>
+				<!-- 血条 -->
+				<div id="blood">
+					生命:
+					<img src="img/normal/5.gif" alt="">
+					<img src="img/normal/5.gif" alt="">
+					<img src="img/normal/5.gif" alt="">
+					<img src="img/normal/5.gif" alt="">
+					<img src="img/normal/5.gif" alt="">
+					<img src="img/normal/5.gif" alt="">
+				</div>
+			</div>
+		</div>
+		<div class="main"></div>
+		<div id="mark">
+			<div class="btn-wrap">
+				<button>分享</button>
+				<button>再来一次</button>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="./js/lib/zepto/zepto.min.js"></script>
+	<script type="text/javascript" src="./js/lib/zepto/zepto.touch.js"></script>
+	<script type="text/javascript" src="./js/lib/zepto/zepto.show.js"></script>
+	<script type="text/javascript" src="./js/lib/zepto/zepto.animate.js"></script>
+	<script type="text/javascript" src="./js/main.js"></script>
 </body>
 </html>
