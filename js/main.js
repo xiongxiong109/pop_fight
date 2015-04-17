@@ -20,15 +20,17 @@ var pop={
 	//基本分
 	baseScore:2,
 	//开始的速度
-	speed:50,
+	speed:80,
 	//步进速度
 	step:5,
 	//最大速度
-	min:50,
+	min:30,
 	//图片生成的频率
-	fqz:1000,
+	fqz:1500,
 	//跳变频率
 	fStep:80,
+	//最大频率
+	maxF:800,
 	//总分
 	total:0,
 	// 图片数组
@@ -98,7 +100,7 @@ var pop={
 					$("#start").attr('disabled',false).removeClass('disabled').text("开始游戏");
 				},1000);
 			});
-		},1000);
+		},2000);
 
 	},
 	moveTimer:[],
@@ -159,8 +161,8 @@ var pop={
 						if(pop.speed<=pop.min){
 							pop.speed=pop.min;
 						}
-						if(pop.fqz<=400){
-							pop.fqz=400;
+						if(pop.fqz<=pop.maxF){
+							pop.fqz=pop.maxF;
 						}
 						pop.fqz-=pop.fStep;
 						pop.start();
@@ -182,6 +184,7 @@ var pop={
 				var img=$(this);
 				if($(this).position().top>$(this).parent().height()-$(this).height()){
 					//碰撞检测
+					img.hide();
 					var oImg=$("#blood").find('img');
 					if(oImg.length<=1){
 
@@ -211,8 +214,13 @@ var pop={
 		},pop.fqz);
 	},
 	gameover:function(){
-		
-		// window.location.reload();
+		$("#mark").show().addClass('animated bounceInDown');
+		$("#sBtn").tap(function(){
+			$("#share").fadeIn();
+		});
+		$("#reflesh").tap(function(){
+			window.location.reload();
+		})
 		//存储最高分
 		if(window.localStorage.getItem('bear_maxScore')<=pop.total ){
 			window.localStorage.setItem('bear_maxScore',pop.total);
