@@ -1,5 +1,6 @@
 $(function(){
 
+	pop.resize();
 	pop.preload();
 	$("#start").tap(function(){
 		if($(this).text()=='开始游戏'){
@@ -24,13 +25,13 @@ var pop={
 	//步进速度
 	step:5,
 	//最大速度
-	min:30,
+	min:18,
 	//图片生成的频率
 	fqz:1500,
 	//跳变频率
 	fStep:80,
 	//最大频率
-	maxF:800,
+	maxF:600,
 	//总分
 	total:0,
 	// 图片数组
@@ -107,17 +108,7 @@ var pop={
 	//创建元素
 	create:function(){
 		var posArr=[];
-		if( $(window).height()<=480 ){
-			$(".main").css({
-				'margin-top':'5px',
-				'height':'325px'
-			});
-		}else{
-			$(".main").css({
-				'margin-top':'30px',
-				'height':'400px'
-			});
-		}
+		pop.resize();
 		//计算表情图大小
 		var imgWidth=Math.floor( $(".main").width() / pop.col );
 		//添加所有的初始图片坐标
@@ -173,6 +164,19 @@ var pop={
 		});
 		pop.move(img);
 	},
+	resize:function(){
+		if( $(window).height()<=480 ){
+			$(".main").css({
+				'margin-top':'5px',
+				'height':'325px'
+			});
+		}else{
+			$(".main").css({
+				'margin-top':'20px',
+				'height':'400px'
+			});
+		}
+	},
 	// 移动
 	move:function(obj){
 
@@ -197,7 +201,7 @@ var pop={
 						$('.main').removeClass('shake shake-constant shake-horizontal');
 						oImg.eq(oImg.length-1).remove();
 						img.remove();
-
+						clearInterval(obj.timer);
 					},500);
 
 				}
